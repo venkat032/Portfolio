@@ -31,22 +31,20 @@
   --space-12: 96px;
   --space-16: 128px;
 
-  /* Layout */
-  --container-max: 1200px;
-  --container-px: 32px;
-  /* updated: 24px → 32px */
-  --section-py: 80px;
+  /* Layout - Fully Fluid, No Max Width */
+  --container-max: none;
+  --container-px: 5vw;            /* Dynamic padding scales with screen */
+  --section-py: 96px;
   --section-py-mobile: 60px;
-  --page-max: 1400px;
-  /* new: outer page wrapper */
+  --page-max: 100%;
 
   /* Card */
   --card-radius: 20px;
   --card-padding: 40px;
 
   /* Grid */
-  --grid-gap: 24px;
-  --hero-gap: 40px;
+  --grid-gap: 32px;
+  --hero-gap: 8vw;               /* Dynamic hero gap */
 }
 
 /* ============================================================
@@ -99,11 +97,12 @@ p {
    ============================================================ */
 @layer components {
 
-  /* ── Container: full-width with safe side padding ── */
+  /* ── Container: full-width with safe dynamic side padding ── */
   .container {
     width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     padding-left: var(--container-px) !important;
     padding-right: var(--container-px) !important;
   }
@@ -111,12 +110,13 @@ p {
   /* ── Page wrapper: full width ── */
   .page-wrapper {
     width: 100%;
+    max-width: none;
   }
 
   /* ── Hero 2-column grid ── */
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 55% 45%;
     align-items: center;
     min-height: 90vh;
     gap: var(--hero-gap);
@@ -130,12 +130,15 @@ p {
     margin-top: 24px;
   }
 
-  /* ── Stats 3-column grid ── */
+  /* ── Stats flex row ── */
   .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 60px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 
