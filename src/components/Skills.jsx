@@ -50,7 +50,7 @@ const Skills = () => {
           <div className="w-32 h-1.5 bg-gradient-to-r from-[#00f0ff] to-[#b026ff] mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4">
           {skillCategories.map((category, idx) => (
             <motion.div
               key={idx}
@@ -58,20 +58,20 @@ const Skills = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="glass-card flex flex-col gap-8 p-10 lg:p-12 border-t-[3px] relative overflow-hidden group shadow-2xl bg-[rgba(15,15,20,0.4)] hover:bg-[rgba(20,20,25,0.8)] h-full"
+              className="glass-card flex flex-col gap-5 p-6 border-t-[3px] relative overflow-hidden group shadow-xl bg-[rgba(15,15,20,0.4)] hover:bg-[rgba(20,20,25,0.8)] h-full"
               style={{ borderTopColor: category.color.includes('00f0ff') ? '#00f0ff' : '#b026ff' }}
             >
               <div className={`absolute -right-10 -top-10 w-48 h-48 bg-gradient-to-br ${category.color} opacity-10 rounded-full blur-3xl group-hover:opacity-30 transition-opacity duration-700`}></div>
 
-              <h3 className="text-2xl font-bold font-outfit text-white tracking-wider flex-shrink-0">
+              <h3 className="text-lg font-bold font-outfit text-white tracking-wider flex-shrink-0 uppercase">
                 {category.title}
               </h3>
 
-              <div className="flex flex-wrap gap-4 lg:gap-5 relative z-10">
+              <div className="flex flex-wrap gap-2 relative z-10">
                 {category.skills.map((skill, sIdx) => (
                   <span
                     key={sIdx}
-                    className="px-6 py-3 rounded-2xl text-sm font-semibold tracking-wide bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] shadow-sm hover:border-[#00f0ff] hover:text-[#00f0ff] hover:bg-[rgba(0,240,255,0.1)] hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300 cursor-default"
+                    className="px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wider uppercase bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] shadow-sm hover:border-[#00f0ff] hover:text-[#00f0ff] hover:bg-[rgba(0,240,255,0.1)] transition-all duration-300 cursor-default"
                   >
                     {skill}
                   </span>

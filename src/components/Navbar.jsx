@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,19 +27,28 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
-        <a href="#home" className={styles.logo}>
+        <Link to="/" className={styles.logo}>
           <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00f0ff] to-[#b026ff] flex items-center justify-center text-white text-lg mr-2 shadow-[0_0_15px_rgba(0,240,255,0.4)] group-hover:rotate-12 transition-transform duration-300">V</span>
           VENKAT<span className="text-gradient">.AI</span>
-        </a>
+        </Link>
         <div className={styles.navLinks}>
-          <a href="#about" className={styles.link}>About</a>
-          <a href="#skills" className={styles.link}>Skills</a>
-          <a href="#projects" className={styles.link}>Projects</a>
-          <a href="#experience" className={styles.link}>Experience</a>
+          <a href={isHome ? "#about" : "/#about"} className={styles.link}>About</a>
+          <a href={isHome ? "#skills" : "/#skills"} className={styles.link}>Skills</a>
+          <Link to="/projects" className={styles.link}>Projects</Link>
+          <a href={isHome ? "#experience" : "/#experience"} className={styles.link}>Experience</a>
         </div>
-        <a href="#contact" className={styles.btn}>
-          Contact Me
-        </a>
+        <div className="flex items-center gap-4">
+          <a 
+            href="/Venkat_Narayana.pdf" 
+            download 
+            className="hidden lg:flex items-center gap-2 px-6 py-2.5 text-[10px] font-black tracking-[0.2em] uppercase text-[#00f0ff] border border-[#00f0ff]/30 rounded-lg hover:bg-[#00f0ff]/5 transition-all"
+          >
+            Resume <span className="text-[14px]">↓</span>
+          </a>
+          <a href={isHome ? "#contact" : "/#contact"} className={styles.btn}>
+            Contact Me
+          </a>
+        </div>
       </div>
     </nav>
   );

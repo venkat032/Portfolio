@@ -11,8 +11,9 @@ const Hero = () => {
     <section id="home" className="relative min-h-[100vh] flex items-center justify-center pt-40 pb-20 overflow-hidden">
       {/* Background elements */}
       <ParticleBackground />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00f0ff] rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#b026ff] rounded-full mix-blend-screen filter blur-[100px] opacity-20 animate-pulse delay-1000"></div>
+      <div className="grid-overlay"></div>
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#00f0ff] rounded-full mix-blend-screen filter blur-[120px] opacity-[0.15] animate-pulse pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#b026ff] rounded-full mix-blend-screen filter blur-[120px] opacity-[0.15] animate-pulse delay-1000 pointer-events-none"></div>
 
       <div className="container relative z-10">
         <div className="hero-grid">
@@ -23,70 +24,70 @@ const Hero = () => {
             className="flex-1 text-center md:text-left"
           >
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-block px-6 py-2 rounded-full glass mb-8 border border-[#00f0ff]/30 shadow-[0_0_15px_rgba(0,240,255,0.1)]"
+              className="inline-flex items-center gap-3 px-5 py-2 rounded-full glass mb-10 border border-[#00f0ff]/30 shadow-[0_0_20px_rgba(0,240,255,0.15)] relative overflow-hidden group"
             >
-              <span className="text-[#00f0ff] text-sm font-bold tracking-widest uppercase">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00f0ff]/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[1.5s] ease-in-out"></div>
+              <div className="w-2 h-2 rounded-full bg-[#00f0ff] animate-ping"></div>
+              <span className="text-[#00f0ff] text-[11px] font-black tracking-[0.2em] uppercase">
                 Next-Generation AI Development
               </span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black mb-4 font-outfit leading-[1.1] tracking-[-1px]">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 font-outfit leading-[1] tracking-[-0.04em]">
               M. Venkat Lakshmi <br className="hidden md:block" />
               <span className="text-gradient">Narayana</span>
             </h1>
 
-            <h2 className="text-2xl lg:text-4xl font-semibold mb-10 text-gray-300 min-h-[48px] lg:min-h-[64px] tracking-wide">
+            <h2 className="text-2xl lg:text-3xl font-medium mb-12 text-white/80 min-h-[48px] lg:min-h-[56px] tracking-tight font-outfit">
               <Typewriter
                 words={[
-                  'AI/ML Engineer',
-                  'Generative AI Developer',
-                  'Python AI Systems Builder'
+                  'Architecting Intelligent Systems',
+                  'Building Autonomous AI Agents',
+                  'Developing Scalable RAG Pipelines'
                 ]}
                 loop={true}
                 cursor
                 cursorStyle="_"
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={1000}
+                typeSpeed={80}
+                deleteSpeed={40}
+                delaySpeed={1200}
               />
             </h2>
 
-            <p className="text-gray-400 text-lg lg:text-xl mb-14 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-              AI engineer focused on building intelligent systems using LLMs, machine learning, and automation. Specialized in RAG chatbots, AI agents, and scalable AI applications.
+            <p className="text-gray-400 text-lg lg:text-xl mb-16 max-w-2xl mx-auto md:mx-0 leading-[1.8] font-light">
+              Pioneering the next wave of <span className="text-white font-medium">Machine Intelligence</span>. specialized in RAG, Agentic workflows, and deploying sophisticated LLM applications that drive real-world impact.
             </p>
 
-            <div className="hero-buttons">
-              <MagneticButton as="a" href="#projects" className="px-10 py-5 rounded-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-white font-bold tracking-widest uppercase text-sm transition-transform duration-300 flex items-center shadow-[0_0_30px_rgba(0,240,255,0.4)] hover:shadow-[0_0_40px_rgba(176,38,255,0.5)]">
-                View Projects
+            <div className="hero-buttons gap-6">
+              <MagneticButton as="a" href="#projects" className="px-12 py-5 rounded-full bg-gradient-to-r from-[#00f0ff] to-[#b026ff] text-white font-black tracking-[0.15em] uppercase text-xs transition-all duration-300 flex items-center shadow-[0_0_40px_rgba(0,240,255,0.35)] hover:shadow-[0_0_50px_rgba(176,38,255,0.5)] hover:scale-105 active:scale-95">
+                Launch Portfolio
               </MagneticButton>
-              <MagneticButton as="a" href="#skills" className="px-10 py-5 rounded-full glass border border-[rgba(0,240,255,0.5)] text-white font-bold tracking-widest uppercase text-sm hover:bg-[rgba(0,240,255,0.1)] transition-all duration-300 flex items-center">
-                Explore AI Work
-              </MagneticButton>
-              <MagneticButton as="a" href="/resume.pdf" download className="px-10 py-5 rounded-full glass border border-[rgba(255,255,255,0.2)] text-white font-bold tracking-widest uppercase text-sm hover:border-white transition-all duration-300 items-center hidden xl:flex">
-                Download Resume
-              </MagneticButton>
-              <MagneticButton as="a" href="#contact" className="px-10 py-5 rounded-full glass border border-[#b026ff]/50 text-white font-bold tracking-widest uppercase text-sm hover:border-[#b026ff] hover:bg-[rgba(176,38,255,0.1)] transition-all duration-300 flex items-center">
+              <MagneticButton as="a" href="#contact" className="px-12 py-5 rounded-full glass border border-white/10 text-white font-black tracking-[0.15em] uppercase text-xs hover:bg-white/5 hover:border-white/30 transition-all duration-300 flex items-center">
                 Contact Me
               </MagneticButton>
             </div>
 
-            <div className="stats-grid border-t border-[rgba(255,255,255,0.05)] pt-10">
-              <div className="text-center md:text-left group">
-                <h3 className="text-4xl font-black text-white mb-2 group-hover:text-[#00f0ff] transition-colors"><span className="text-[#00f0ff]">15</span>+</h3>
-                <p className="text-[10px] lg:text-xs text-gray-400 uppercase tracking-widest font-semibold flex flex-col"><span>AI Projects</span> Built</p>
+            <div className="stats-grid border-t border-[rgba(255,255,255,0.05)] pt-12">
+              <div className="text-center md:text-left group cursor-default">
+                <h3 className="text-4xl lg:text-5xl font-black text-white mb-2 tracking-tighter transition-all group-hover:tracking-normal"><span className="text-[#00f0ff]">15</span>+</h3>
+                <p className="text-[9px] lg:text-[10px] text-gray-500 uppercase tracking-[0.3em] font-black leading-tight">
+                  <span className="block text-white/40 group-hover:text-[#00f0ff] transition-colors">AI Systems</span> Deployments
+                </p>
               </div>
-              <div className="w-px h-12 bg-gradient-to-b from-[rgba(255,255,255,0.1)] to-transparent hidden md:block"></div>
-              <div className="text-center md:text-left group">
-                <h3 className="text-4xl font-black text-white mb-2 group-hover:text-[#b026ff] transition-colors"><span className="text-[#b026ff]">10</span>+</h3>
-                <p className="text-[10px] lg:text-xs text-gray-400 uppercase tracking-widest font-semibold flex flex-col"><span>ML Models</span> Developed</p>
+              <div className="text-center md:text-left group cursor-default">
+                <h3 className="text-4xl lg:text-5xl font-black text-white mb-2 tracking-tighter transition-all group-hover:tracking-normal"><span className="text-[#b026ff]">10</span>+</h3>
+                <p className="text-[9px] lg:text-[10px] text-gray-500 uppercase tracking-[0.3em] font-black leading-tight">
+                  <span className="block text-white/40 group-hover:text-[#b026ff] transition-colors">ML Models</span> Architected
+                </p>
               </div>
-              <div className="w-px h-12 bg-gradient-to-b from-[rgba(255,255,255,0.1)] to-transparent hidden md:block"></div>
-              <div className="text-center md:text-left group hidden sm:block">
-                <h3 className="text-4xl font-black text-white mb-2 group-hover:text-yellow-400 transition-colors"><span className="text-yellow-400">20</span>+</h3>
-                <p className="text-[10px] lg:text-xs text-gray-400 uppercase tracking-widest font-semibold flex flex-col"><span>Automation</span> Workflows</p>
+              <div className="text-center md:text-left group cursor-default hidden sm:block">
+                <h3 className="text-4xl lg:text-5xl font-black text-white mb-2 tracking-tighter transition-all group-hover:tracking-normal"><span className="text-yellow-400">20</span>+</h3>
+                <p className="text-[9px] lg:text-[10px] text-gray-500 uppercase tracking-[0.3em] font-black leading-tight">
+                  <span className="block text-white/40 group-hover:text-yellow-400 transition-colors">Automated</span> Workflows
+                </p>
               </div>
             </div>
           </motion.div>

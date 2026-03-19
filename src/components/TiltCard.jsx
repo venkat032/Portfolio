@@ -38,9 +38,11 @@ const TiltCard = ({ children, className }) => {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateY, rotateX, transformStyle: "preserve-3d" }}
-      className={`w-full h-full relative cursor-auto ${className}`}
+      whileHover={{ y: -12 }} // Increased lift for more premium feel
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className={`w-full h-full relative ${className}`}
     >
-      <div style={{ transform: "translateZ(40px)", transformStyle: "preserve-3d" }} className="w-full h-full duration-300">
+      <div style={{ transform: "translateZ(50px)", transformStyle: "preserve-3d" }} className="w-full h-full relative z-10">
         {children}
       </div>
     </motion.div>

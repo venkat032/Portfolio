@@ -64,7 +64,8 @@ const Experience = () => {
                 <Briefcase size={24} />
               </div>
               <h2 className="text-3xl font-bold font-outfit">Experience</h2>
-            </motion.div>
+            </motion.div><br />
+
 
             <div className="flex flex-col gap-8">
               {experiences.map((exp, idx) => (
@@ -80,7 +81,7 @@ const Experience = () => {
                   <div className="absolute -left-10 top-6 w-4 h-4 rounded-full bg-[#00f0ff] shadow-[0_0_10px_#00f0ff] hidden lg:block opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <h3 className="text-xl font-bold text-white mb-2">{exp.role}</h3>
                   <p className="text-[#b026ff] font-medium text-sm mb-4">{exp.company}</p>
-                  <p className="text-gray-400 text-sm leading-relaxed">{exp.description}</p>
+                  <p className="text-gray-400 text-sm leading-[1.75]">{exp.description}</p>
                 </motion.div>
               ))}
             </div>

@@ -7,21 +7,25 @@ const About = () => {
     {
       icon: <Cpu size={32} className="text-[#00f0ff]" />,
       title: "AI Engineering",
+      level: 95,
       description: "Designing end-to-end intelligent systems, fine-tuning neural networks, and developing scalable algorithms."
     },
     {
       icon: <Network size={32} className="text-[#b026ff]" />,
       title: "Machine Learning",
+      level: 90,
       description: "Building predictive ML models, data analysis deep dives, and optimizing accuracy profiles."
     },
     {
       icon: <Zap size={32} className="text-[#00f0ff]" />,
       title: "Generative AI",
+      level: 92,
       description: "Developing intelligent RAG chatbots, Agentic AI, and document intelligence pipelines."
     },
     {
       icon: <Code2 size={32} className="text-[#b026ff]" />,
       title: "Automation Systems",
+      level: 88,
       description: "Creating powerful multi-agent systems and automating enterprise workflows using n8n and AI tools."
     }
   ];
@@ -62,11 +66,12 @@ const About = () => {
                   M. Venkat Lakshmi Narayana
                 </h3>
 
-                <p className="text-lg md:text-xl leading-relaxed md:leading-loose text-gray-300 mb-8">
+                <p className="text-lg md:text-xl leading-[1.8] text-gray-300 mb-10">
                   I am an AI/ML Engineer passionate about designing and building intelligent, real-world AI applications. My expertise lies in <strong className="text-[#00f0ff] font-medium">Large Language Models</strong>, advanced machine learning, and comprehensive automation systems.
-                </p>
+                </p><br />
 
-                <p className="text-base md:text-lg leading-relaxed md:leading-loose text-gray-400">
+
+                <p className="text-base md:text-lg leading-[1.8] text-gray-400">
                   Currently, my work revolves around developing scalable AI products—ranging from intelligent <strong className="text-white font-medium">RAG chatbots</strong> and autonomous <strong className="text-white font-medium">AI agents</strong>, to sophisticated document intelligence pipelines and enterprise-grade workflow automation platforms.
                 </p>
               </div>
@@ -80,16 +85,53 @@ const About = () => {
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -10, scale: 1.02 }}
               viewport={{ once: true }}
-              className="glass-card p-10 lg:p-12 border-t-[3px] border-t-transparent hover:border-t-[#00f0ff] flex flex-col items-start justify-between group shadow-xl bg-[rgba(15,15,20,0.6)] hover:bg-[rgba(20,20,25,0.8)] min-h-[350px]"
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="glass-card p-10 lg:p-12 border-t-[3px] border-t-transparent hover:border-t-[#00f0ff] flex flex-col items-start justify-between group shadow-xl bg-[rgba(15,15,20,0.6)] hover:bg-[rgba(20,20,25,0.8)] min-h-[350px] transition-colors duration-500"
             >
-              <div className="w-16 h-16 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.05)] flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-500 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.3)]">
-                {card.icon}
+              <div className="w-16 h-16 rounded-2xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.05)] flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-translate-y-2 transition-transform duration-500 group-hover:shadow-[0_0_25px_rgba(0,240,255,0.3)] group-hover:bg-[#00f0ff]/10">
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity, 
+                    ease: "easeInOut",
+                    delay: index * 0.5 
+                  }}
+                >
+                  {card.icon}
+                </motion.div>
               </div>
               <h3 className="text-2xl lg:text-3xl font-bold mb-6 text-white tracking-wide leading-tight">{card.title}</h3>
-              <p className="text-gray-400 text-base lg:text-lg leading-relaxed mt-auto">
+              <p className="text-gray-400 text-base lg:text-lg leading-relaxed mt-4 mb-10">
                 {card.description}
               </p>
+
+              {/* Infographic Element: Progress Bar */}
+              <div className="w-full mt-auto">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Expertise Level</span>
+                  <span className="text-[10px] font-bold text-white opacity-60">{card.level}%</span>
+                </div>
+                  <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${card.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 2, delay: 0.5, ease: "circOut" }}
+                      className="h-full bg-gradient-to-r from-[#00f0ff] via-[#b026ff] to-[#00f0ff] bg-[length:200%_100%] relative"
+                    >
+                      <motion.div
+                        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+                        className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      />
+                    </motion.div>
+                  </div>
+              </div>
             </motion.div>
           ))}
         </div>
