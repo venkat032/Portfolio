@@ -14,7 +14,7 @@ export const projectsData = [
     ],
     architecture: "The architecture consists of a Flask backend serving as an API layer, LangChain for orchestrating the RAG workflow, and a frontend built with HTML/CSS. It uses FAISS for efficient similarity search and OpenAI's Embeddings for text vectorization.",
     link: "https://gen-ai-chatbot-37j6.onrender.com",
-    github: "#",
+    github: "https://github.com/venkat032/GEN_AI_CHATBOT",
     image: "/project-rag-chatbot.png"
   },
   {
@@ -67,8 +67,8 @@ export const projectsData = [
       "K-Fold Cross-Validation"
     ],
     architecture: "The pipeline is built using Scikit-Learn's Pipeline object, ensuring reproducibility and clean code. It includes custom transformers for domain-specific feature engineering.",
-    link: "#",
-    github: "#",
+    link: "https://titanic-project-gtf3.onrender.com/",
+    github: "https://github.com/venkat032/Titanic_project",
     image: "/project-titanic.png"
   },
   {
